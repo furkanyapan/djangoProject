@@ -3,6 +3,6 @@ from django.shortcuts import render
 
 # Create your views here.
 def index(request):
-    text="Merhaba Django <br> br denemesi  "
+    text="Merhaba Django <br> br denemesi     "
     context = {'text': text}
     return render(request, 'index.html', context)
