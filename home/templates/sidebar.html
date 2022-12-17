@@ -14,14 +14,14 @@
 
                     {% recursetree category %}
 						<li class="dropdown side-dropdown">
-                            <a href="/resurant/{{ node.slug }}" class="dropdown-toggle" {% if not node.is_leaf_node %} data-toggle="dropdown" aria-expanded="true" {% endif %}>{{ node.title }} {% if not node.is_leaf_node %} <i class="fa fa-angle-right">{% endif %}</i></a>
+                            <a href="/category/{{ node.id }}/{{ node.slug }}" class="dropdown-toggle" {% if not node.is_leaf_node %} data-toggle="dropdown" aria-expanded="true" {% endif %}>{{ node.title }} {% if not node.is_leaf_node %} <i class="fa fa-angle-right">{% endif %}</i></a>
                             <div class="custom-menu">
                                 <div class="row">
                                     <div class="col-md-4">
                                         {% if not node.is_leaf_node %}
                                             <ul class="list-links">
                                                 <h3 class="list-links-title">MENULER</h3></li>
-                                            <li><a href="/resurant/{{ node.slug }}">{{ children }}</a></li>
+                                            <li><a href="/category/{{ node.slug }}">{{ children }}</a></li>
                                 </ul>
                                         {% endif %}
                                     <hr class="hidden-md hidden-lg">
