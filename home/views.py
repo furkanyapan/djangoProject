@@ -3,14 +3,15 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 from home.models import Setting, ContactFormu, ContactFormMessage
-from product.models import Product
+from product.models import Product, Category
 
 
 # Create your views here.
 def index(request):
     setting = Setting.objects.get(pk=1)
     sliderdata = Product.objects.all()[:4]
-    context = {'setting': setting, 'page': 'home', 'sliderdata': sliderdata}
+    category = Category.objects.all()
+    context = {'setting': setting, 'category': category, 'page': 'home', 'sliderdata': sliderdata}
     return render(request, 'index.html', context)
 
 def hakkimizda(request):
