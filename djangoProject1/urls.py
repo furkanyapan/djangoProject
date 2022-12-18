@@ -28,7 +28,8 @@ urlpatterns = [
     path('home/', include('home.urls')),
     path('product/', include('product.urls')),
     path('admin/', admin.site.urls),
-    path('category/<int:id>/<slug:slug>/', views.category_product, name='category_products')
+    path('category/<int:id>/<slug:slug>/', views.category_product, name='category_products'),
+    path('product/<int:id>/<slug:slug>/', views.product_detail, name='product_detail'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

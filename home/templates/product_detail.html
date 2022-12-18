@@ -1,0 +1,150 @@
+{% extends "homebase.html" %}
+
+{% block title %} {{ product.title }}{% endblock %}
+{% block keywords %} {{ product.keywords }} }}{% endblock %}
+{% block description %} {{ product.description }}{% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' />
+{% endblock %}
+
+{% block sidebar %}
+    {% include "sidebar.html" %}
+{% endblock %}
+
+{% block content %}
+	<!-- BREADCRUMB -->
+	<div id="breadcrumb">
+		<div class="container">
+			<ul class="breadcrumb">
+				<li><a href="#">Home</a></li>
+				<li><a href="#">Products</a></li>
+				<li><a href="/category/{{ product.category_id }}/{{ product.category.slug }}">{{ product.category }}</a></li>
+				<li class="active">{{ product.title }}</li>
+			</ul>
+		</div>
+	</div>
+	<!-- /BREADCRUMB -->
+
+	<!-- section -->
+	<div class="section">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				<!--  Product Details -->
+				<div class="product product-details clearfix">
+					<div class="col-md-12">
+						<div class="product-body">
+							<h2 class="product-name">{{ product.title }}</h2>
+							<h3 class="product-price">{{ product.price }} TL </h3>
+						</div>
+					</div>
+					<div class="col-md-3">
+
+					</div>
+						<div class="col-md-6">
+						<div id="product-main-view">
+							<div class="product-view">
+								<img src="{{product.image.url}}" alt="">
+							</div>
+                            {% for rs in images %}
+							<div class="product-view">
+								<img src="{{rs.image.url}}" alt="">
+							</div>
+                            {% endfor %}
+						</div>
+						<div id="product-view">
+							<div class="product-view">
+								<img src="{{product.image.url}}" alt="">
+							</div>
+                            {% for rs in images %}
+							<div class="product-view">
+								<img src="{{rs.image.url}}" alt="">
+							</div>
+                            {% endfor %}
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="product-tab">
+                            <h2>Açıklama</h2>
+                                <p>{{ product.detail | safe }}</p>
+                            <br><br>
+                            <h2>Yorumlar</h2>
+								<div id="tab2" class="tab-pane fade in">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="product-reviews">
+												<div class="single-review">
+													<div class="review-heading">
+														<div><a href="#"><i class="fa fa-user-o"></i> John</a></div>
+														<div><a href="#"><i class="fa fa-clock-o"></i> 27 DEC 2017 / 8:0 PM</a></div>
+													</div>
+													<div class="review-body">
+														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute
+															irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+													</div>
+												</div>
+
+												<div class="single-review">
+													<div class="review-heading">
+														<div><a href="#"><i class="fa fa-user-o"></i> John</a></div>
+														<div><a href="#"><i class="fa fa-clock-o"></i> 27 DEC 2017 / 8:0 PM</a></div>
+													</div>
+													<div class="review-body">
+														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute
+															irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+													</div>
+												</div>
+
+												<div class="single-review">
+													<div class="review-heading">
+														<div><a href="#"><i class="fa fa-user-o"></i> John</a></div>
+														<div><a href="#"><i class="fa fa-clock-o"></i> 27 DEC 2017 / 8:0 PM</a></div>
+													</div>
+													<div class="review-body">
+														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute
+															irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+													</div>
+												</div>
+
+												<ul class="reviews-pages">
+													<li class="active">1</li>
+													<li><a href="#">2</a></li>
+													<li><a href="#">3</a></li>
+													<li><a href="#"><i class="fa fa-caret-right"></i></a></li>
+												</ul>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<h4 class="text-uppercase">Write Your Review</h4>
+											<p>Your email address will not be published.</p>
+											<form class="review-form">
+												<div class="form-group">
+													<input class="input" type="text" placeholder="Your Name" />
+												</div>
+												<div class="form-group">
+													<input class="input" type="email" placeholder="Email Address" />
+												</div>
+												<div class="form-group">
+													<textarea class="input" placeholder="Your review"></textarea>
+												</div>
+												<button class="primary-btn">Submit</button>
+											</form>
+										</div>
+									</div>
+								</div>
+
+						</div>
+					</div>
+
+				</div>
+				<!-- /Product Details -->
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /section -->
+
+{% endblock %}
