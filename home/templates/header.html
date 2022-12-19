@@ -17,7 +17,13 @@
 				</div>
 				<div class="pull-right">
 					<ul class="header-btns">
-
+						<!-- Account -->
+                            {% if user.id is not None %}
+							<p><strong><a href="#" class="text-uppercase">{{ user.first_name}} {{ user.last_name}}</a> / <a href="/logout/" class="text-uppercase">Logout</a></strong></p>
+                            {% else %}
+							<p><strong><a href="/login/" class="text-uppercase">Login</a> / <a href="/join/" class="text-uppercase">Join</a></strong></p>
+						    {% endif %}
+                        <!-- /Account -->
 
 						<!-- Mobile nav toggle-->
 						<li class="nav-toggle">

@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.contrib.auth import logout, authenticate, login
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
@@ -49,16 +50,38 @@ def iletisim(request):
     return render(request, 'iletisim.html', context)
 
 def category_product(request,id,slug):
+    setting = Setting.objects.get(pk=1)
     category = Category.objects.all()
     categorydata = Category.objects.get(pk=id)
     products = Product.objects.filter(category_id=id)
-    context = {'products': products, 'category': category, 'categorydata': categorydata}
+    context = {'products': products, 'category': category, 'categorydata': categorydata, 'setting': setting,}
     return render(request, 'products.html', context)
 
 def product_detail(request,id,slug):
+    setting = Setting.objects.get(pk=1)
     category = Category.objects.all()
     product = Product.objects.get(pk=id)
     images = Images.objects.filter(product_id=id)
     comments = Comment.objects.filter(product_id=id, status='True')
-    context = {'product': product, 'category': category, 'images': images, 'comments': comments}
+    context = {'product': product, 'category': category, 'images': images, 'comments': comments, 'setting': setting,}
     return render(request, 'product_detail.html', context)
+
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect('/')
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect('/')
+        else:
+            messages.error(request, "Kullanıcı adı veya şifre yanlış")
+            return HttpResponseRedirect('/login')
+    category = Category.objects.all()
+    setting = Setting.objects.get(pk=1)
+    context = {'category': category, 'setting': setting, }
+    return render(request, 'login.html', context)
