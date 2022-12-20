@@ -3,6 +3,7 @@ from django.contrib.auth import logout, authenticate, login
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
+from home.forms import SignUpForm
 from home.models import Setting, ContactFormu, ContactFormMessage
 from product.models import Product, Category, Images, Comment
 
@@ -85,3 +86,20 @@ def login_view(request):
     setting = Setting.objects.get(pk=1)
     context = {'category': category, 'setting': setting, }
     return render(request, 'login.html', context)
+
+def signup_view(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return HttpResponseRedirect('/')
+
+    form = SignUpForm()
+    category = Category.objects.all()
+    setting = Setting.objects.get(pk=1)
+    context = {'category': category, 'form': form, 'setting': setting, }
+    return render(request, 'signup.html', context)
