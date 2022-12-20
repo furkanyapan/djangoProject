@@ -17,8 +17,7 @@
 	<div id="breadcrumb">
 		<div class="container">
 			<ul class="breadcrumb">
-				<li><a href="#">Home</a></li>
-				<li><a href="#">Products</a></li>
+				<li><a href="/">Home</a></li>
 				<li><a href="/category/{{ product.category_id }}/{{ product.category.slug }}">{{ product.category }}</a></li>
 				<li class="active">{{ product.title }}</li>
 			</ul>
@@ -78,8 +77,8 @@
                                                 {% for rs in comments %}
 												<div class="single-review">
 													<div class="review-heading">
-														<div><a href="#"><i class="fa fa-user-o"></i> <b>{{ rs.user.first_name }}</b></a></div>
-														<div><a href="#"><i class="fa fa-clock-o"></i> {{ rs.create_at }}</a></div>
+														<div><a href="/user/"><i class="fa fa-user-o"></i> <b>{{ rs.user.first_name }}</b></a></div>
+														<div><a><i class="fa fa-clock-o"></i> {{ rs.create_at }}</a></div>
 													</div>
 													<div class="review-body">
                                                         <h4>{{ rs.subject }}</h4>
@@ -87,12 +86,7 @@
 													</div>
 												</div>
                                                 {% endfor %}
-												<ul class="reviews-pages">
-													<li class="active">1</li>
-													<li><a href="#">2</a></li>
-													<li><a href="#">3</a></li>
-													<li><a href="#"><i class="fa fa-caret-right"></i></a></li>
-												</ul>
+
 											</div>
 										</div>
 										<div class="col-md-6">

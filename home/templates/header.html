@@ -19,9 +19,9 @@
 					<ul class="header-btns">
 						<!-- Account -->
                             {% if user.id is not None %}
-							<p><strong><a href="#" class="text-uppercase">{{ user.first_name}} {{ user.last_name}}</a> / <a href="/logout/" class="text-uppercase">Logout</a></strong></p>
+							<p><strong><a href="/user/" class="text-uppercase">{{ user.first_name}} {{ user.last_name}}</a> / <a href="/logout/" class="text-uppercase">Çıkış Yap</a></strong></p>
                             {% else %}
-							<p><strong><a href="/login/" class="text-uppercase">Login</a> / <a href="/signup/" class="text-uppercase">Sign Up</a></strong></p>
+							<p><strong><a href="/login/" class="text-uppercase">Giriş Yap</a> / <a href="/signup/" class="text-uppercase">Üye Ol</a></strong></p>
 						    {% endif %}
                         <!-- /Account -->
 
